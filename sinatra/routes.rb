@@ -1,8 +1,8 @@
 require 'sinatra'
 require 'socket'
 
-host = '192.168.1.101'
-port = 80
+host = '192.168.1.133'
+port = 50007
 
 
 post '/lamp/' do
@@ -18,6 +18,24 @@ end
 get '/' do
   erb :index
 end
+
+get '/switch/' do
+  
+  puts "Testing..."
+  
+  s = TCPSocket.open('192.168.1.133', 80)
+  
+  s.puts("RS\n")
+    
+  while line = s.gets
+      puts line.chop
+  end
+  
+  s.close
+  
+  
+end
+
 
 # not_found do
 #   halt 404, "Page not found!"

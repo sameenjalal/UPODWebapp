@@ -23,7 +23,7 @@ get '/switch/' do
   
   puts "Testing..."
   
-  s = TCPSocket.open('192.168.1.133', 80)
+  s = TCPSocket.open('192.168.1.106', 80)
   
   s.puts("RS\n")
     

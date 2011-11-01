@@ -10,9 +10,9 @@ $_POST['action'] = "toggle";
 $_POST['negate'] = "false";
 $_POST['d_event'] = 1;
 $_POST['t_event'] = 2;
-$_POST['init'] = "false";
+//$_POST['init'] = "false";
 $_POST['prev_state'] = "false";
-
+ 
 // DONE TESTING 
 
 
@@ -42,6 +42,14 @@ $script = array(
 	"init" => "false",
 	"prev_state" => "false"
 	);
+
+// REMOVE ALL NULLS FROM ARRAY
+foreach( $script as $field ) {
+	if( $field == null ) {
+		unset( $script[ $field ] );
+	}
+}
+print_r( $script );
 	
 // SET THE SCRIPT AND SCRIPT ID VALUES IN REDIS
 $retval = $redis->hmset($script_id, $script);

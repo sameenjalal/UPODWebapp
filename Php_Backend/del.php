@@ -19,5 +19,6 @@ if( $script_id == null ) {
 }
 
 $all = $redis->del( $script_id );
+// TODO: MAKE IT SO THE SCRIPT ID IS DELETED FROM the "devices" list
 print_r( $all . "\n" );
 return $all;
